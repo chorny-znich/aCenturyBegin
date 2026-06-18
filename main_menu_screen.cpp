@@ -1,5 +1,6 @@
 #include "main_menu_screen.h"
 #include "about_screen.h"
+#include "adventure_screen.h"
 
 /**
  * @brief For handling Events in handleInput method
@@ -54,9 +55,14 @@ struct MainMenuScreen::ScreenInputVisitor
 			if (screen.mMenuButtons[0].isClicked(mouseViewCoords))
 			{
 				clearUI();
+				dr::ScreenManager::addScreen<AdventureScreen>("adventure_screen");
+			}
+			else if (screen.mMenuButtons[1].isClicked(mouseViewCoords))
+			{
+				clearUI();
 				dr::ScreenManager::addScreen<AboutScreen>("about_screen");
 			}
-			if (screen.mMenuButtons[1].isClicked(mouseViewCoords))
+			else if (screen.mMenuButtons[2].isClicked(mouseViewCoords))
 			{
 				clearUI();
 				dr::ScreenManager::destroyScreen();
