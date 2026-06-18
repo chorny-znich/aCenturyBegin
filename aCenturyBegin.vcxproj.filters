@@ -39,6 +39,9 @@
     <ClCompile Include="main_menu_screen.cpp">
       <Filter>Исходные файлы\Screen</Filter>
     </ClCompile>
+    <ClCompile Include="adventure_screen.cpp">
+      <Filter>Исходные файлы\Screen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game_engine.h">
@@ -53,6 +56,9 @@
     <ClInclude Include="main_menu_screen.h">
       <Filter>Файлы заголовков\Screen</Filter>
     </ClInclude>
+    <ClInclude Include="adventure_screen.h">
+      <Filter>Файлы заголовков\Screen</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="config\engine_config.ini">
@@ -65,6 +71,9 @@
       <Filter>Файлы ресурсов</Filter>
     </None>
     <None Include="data\texture_list.ini">
+      <Filter>Файлы ресурсов</Filter>
+    </None>
+    <None Include="data\font_list.ini">
       <Filter>Файлы ресурсов</Filter>
     </None>
   </ItemGroup>

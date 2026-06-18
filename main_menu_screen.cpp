@@ -69,14 +69,19 @@ struct MainMenuScreen::ScreenInputVisitor
 
 void MainMenuScreen::init()
 {
-	dr::TextButton aboutButton{ {150.f, 50.f}, dr::TextManager::get("normal_button") };
+	dr::TextButton playButton{ {250.f, 75.f}, dr::TextManager::get("main_menu_button") };
+	playButton.setString(dr::StringManager::get("play_button"));
+	playButton.setPosition({ 1600.f, 700.f });
+	mMenuButtons.push_back(playButton);
+
+	dr::TextButton aboutButton{ {250.f, 75.f}, dr::TextManager::get("main_menu_button") };
 	aboutButton.setString(dr::StringManager::get("about_button"));
-	aboutButton.setPosition({ 865.f, 800.f });
+	aboutButton.setPosition({ 1600.f, 800.f });
 	mMenuButtons.push_back(aboutButton);
 
-	dr::TextButton exitButton{ {150.f, 50.f}, dr::TextManager::get("normal_button") };
+	dr::TextButton exitButton{ {250.f, 75.f}, dr::TextManager::get("main_menu_button") };
 	exitButton.setString(dr::StringManager::get("exit_button"));
-	exitButton.setPosition({ 865.f, 875.f });
+	exitButton.setPosition({ 1600.f, 900.f });
 	mMenuButtons.push_back(exitButton);
 }
 
