@@ -53,14 +53,14 @@ struct AboutScreen::ScreenInputVisitor
  */
 void AboutScreen::init()
 {
-	sf::Text description = dr::TextManager::get("main_description");
+	sf::Text description = dr::TextManager::get("about_description");
 	description.setPosition({ 200.f, 500.f });
-	description.setString(dr::StringManager::get("about_app_content"));
+	description.setString(dr::StringManager::get("about_game_content"));
 	mInfo.push_back(description);
 
-	sf::Text version = dr::TextManager::get("main_version");
+	sf::Text version = dr::TextManager::get("about_version");
 	version.setPosition({ 900.f, 600.f });
-	version.setString(dr::StringManager::get("about_app_version"));
+	version.setString(dr::StringManager::get("about_game_version"));
 	mInfo.push_back(version);
 
 	mBackButton.setString(dr::StringManager::get("back_button"));

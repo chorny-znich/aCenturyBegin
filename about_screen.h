@@ -18,7 +18,7 @@ private:
 	struct ScreenInputVisitor;
 
 	sf::View mMainView{ sf::FloatRect({0, 0}, {gd::GraphicsResolution.x, gd::GraphicsResolution.y}) };
-	sf::Sprite mBackground{ dr::Textures::get("background") };
+	sf::Sprite mBackground{ dr::Textures::get("about_background") };
 	std::vector<sf::Text> mInfo;
 	dr::TextButton mBackButton{ {150.f, 50.f}, dr::TextManager::get("normal_button")};
 };
