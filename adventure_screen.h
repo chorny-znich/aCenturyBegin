@@ -1,4 +1,5 @@
 #pragma once
+#include "location.h"
 #include "game_data.h"
 #include <disreality_engine.h>
 
@@ -19,4 +20,5 @@ private:
 	struct ScreenInputVisitor;
 	sf::View mMainView{ sf::FloatRect({0, 0}, {gd::GraphicsResolution.x, gd::GraphicsResolution.y}) };
 	sf::Sprite mAdventureMap{dr::Textures::get("adventure_map_0")};
+	std::vector<Location> mLocations;
 };
