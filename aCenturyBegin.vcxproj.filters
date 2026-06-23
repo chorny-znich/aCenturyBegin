@@ -31,6 +31,12 @@
     <Filter Include="Исходные файлы\Map">
       <UniqueIdentifier>{399e3716-c661-43c3-bd56-88831e0ce30e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\ImGui">
+      <UniqueIdentifier>{74cd2162-04a3-455b-8586-6addab6b090d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\ImGui">
+      <UniqueIdentifier>{18c735ff-fe34-45e6-a906-0c2e3a4b8423}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -52,21 +58,24 @@
       <Filter>Исходные файлы\Map</Filter>
     </ClCompile>
     <ClCompile Include="ImGui\imgui.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="ImGui\imgui_demo.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="ImGui\imgui_draw.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="ImGui\imgui_tables.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="ImGui\imgui_widgets.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="ImGui\imgui-SFML.cpp">
+      <Filter>Исходные файлы\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="location_manager.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -90,28 +99,31 @@
       <Filter>Файлы заголовков\Map</Filter>
     </ClInclude>
     <ClInclude Include="ImGui\imconfig.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\ImGui</Filter>
     </ClInclude>
     <ClInclude Include="ImGui\imgui.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\ImGui</Filter>
     </ClInclude>
     <ClInclude Include="ImGui\imgui_internal.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\ImGui</Filter>
     </ClInclude>
     <ClInclude Include="ImGui\imgui-SFML.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\ImGui</Filter>
     </ClInclude>
     <ClInclude Include="ImGui\imgui-SFML_export.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\ImGui</Filter>
     </ClInclude>
     <ClInclude Include="ImGui\imstb_rectpack.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\ImGui</Filter>
     </ClInclude>
     <ClInclude Include="ImGui\imstb_textedit.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\ImGui</Filter>
     </ClInclude>
     <ClInclude Include="ImGui\imstb_truetype.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="location_manager.h">
+      <Filter>Файлы заголовков\Map</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -143,6 +143,7 @@
     <ClCompile Include="ImGui\imgui_tables.cpp" />
     <ClCompile Include="ImGui\imgui_widgets.cpp" />
     <ClCompile Include="location.cpp" />
+    <ClCompile Include="location_manager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="main_menu_screen.cpp" />
     <ClCompile Include="adventure_screen.cpp" />
@@ -164,6 +165,7 @@
     <ClInclude Include="ImGui\imstb_textedit.h" />
     <ClInclude Include="ImGui\imstb_truetype.h" />
     <ClInclude Include="location.h" />
+    <ClInclude Include="location_manager.h" />
     <ClInclude Include="main_menu_screen.h" />
   </ItemGroup>
   <ItemGroup>

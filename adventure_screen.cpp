@@ -1,4 +1,5 @@
 #include "adventure_screen.h"
+#include "location_manager.h"
 #include <format>
 #include <imgui.h>
 #include <imgui-SFML.h>
@@ -14,28 +15,27 @@ struct AdventureScreen::ScreenInputVisitor
 	void clearUI()
 	{
 		window.setMouseCursor(dr::CursorManager::get("arrow"));
-		//screen.mBackButton.clearOverlap();
 	}
 
 	void operator()(const sf::Event::MouseMoved& mouseMoved)
 	{
 		sf::Vector2f mouseViewCoords = window.mapPixelToCoords(mouseMoved.position);
 		bool isOverlap = false;
-		for (auto& loc : screen.mLocations)
+		for (auto& loc : LocationManager::getLocations())
 		{
-			float dx = mouseViewCoords.x - loc.getCenter().x;
-			float dy = mouseViewCoords.y - loc.getCenter().y;
+			float dx = mouseViewCoords.x - loc.second.getCenter().x;
+			float dy = mouseViewCoords.y - loc.second.getCenter().y;
 			float distance = dx * dx + dy * dy;
-			float radius = loc.getRadius() * loc.getRadius();
+			float radius = loc.second.getRadius() * loc.second.getRadius();
 
 			if (distance <= radius)
 			{
-				loc.setHoverStatus(true);
+				loc.second.setHoverStatus(true);
 				isOverlap = true;
 			}
 			else
 			{
-				loc.setHoverStatus(false);
+				loc.second.setHoverStatus(false);
 			}
 		}
 		if (isOverlap)
@@ -70,20 +70,7 @@ void AdventureScreen::init()
 {
 	ImGui::SFML::Init(dr::ImguiHelper::getWindow());
 
-	Location loc0("railway_station");
-	loc0.setMapPosition({ 885.f, 895.f }, 70.f);
-	loc0.setName(dr::StringManager::get("railway_station_title"));
-	mLocations.push_back(loc0);
-
-	Location loc1("townhall");
-	loc1.setMapPosition({ 705.f, 500.f }, 70.f);
-	loc1.setName(dr::StringManager::get("townhall_title"));
-	mLocations.push_back(loc1);
-
-	Location loc2("cathedral");
-	loc2.setMapPosition({ 1135.f, 215.f }, 70.f);
-	loc2.setName(dr::StringManager::get("cathedral_title"));
-	mLocations.push_back(loc2);
+	LocationManager::init(0);
 }
 
 void AdventureScreen::handleInput(const sf::Event& event, sf::RenderWindow& window)
@@ -107,13 +94,13 @@ void AdventureScreen::render(sf::RenderWindow& window)
 {
 	window.setView(mMainView);
 	window.draw(mAdventureMap);
-	for (auto& loc : mLocations)
+	for (auto& loc : LocationManager::getLocations())
 	{
-		if (loc.isHovered())
+		if (loc.second.isHovered())
 		{
-			sf::CircleShape circle(loc.getRadius());
-			circle.setOrigin({ loc.getRadius(), loc.getRadius() });
-			circle.setPosition(loc.getCenter());
+			sf::CircleShape circle(loc.second.getRadius());
+			circle.setOrigin({ loc.second.getRadius(), loc.second.getRadius() });
+			circle.setPosition(loc.second.getCenter());
 			circle.setFillColor({ 230, 240, 90, 120 });
 			window.draw(circle);
 		}
