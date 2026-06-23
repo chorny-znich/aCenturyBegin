@@ -78,6 +78,9 @@
     <ClCompile Include="location_manager.cpp">
       <Filter>Исходные файлы\Map</Filter>
     </ClCompile>
+    <ClCompile Include="location_screen.cpp">
+      <Filter>Исходные файлы\Screen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game_engine.h">
@@ -124,6 +127,9 @@
     </ClInclude>
     <ClInclude Include="location_manager.h">
       <Filter>Файлы заголовков\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="location_screen.h">
+      <Filter>Файлы заголовков\Screen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
