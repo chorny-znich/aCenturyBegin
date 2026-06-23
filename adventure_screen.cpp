@@ -20,25 +20,7 @@ struct AdventureScreen::ScreenInputVisitor
 	void operator()(const sf::Event::MouseMoved& mouseMoved)
 	{
 		sf::Vector2f mouseViewCoords = window.mapPixelToCoords(mouseMoved.position);
-		bool isOverlap = false;
-		for (auto& loc : LocationManager::getLocations())
-		{
-			float dx = mouseViewCoords.x - loc.second.getCenter().x;
-			float dy = mouseViewCoords.y - loc.second.getCenter().y;
-			float distance = dx * dx + dy * dy;
-			float radius = loc.second.getRadius() * loc.second.getRadius();
-
-			if (distance <= radius)
-			{
-				loc.second.setHoverStatus(true);
-				isOverlap = true;
-			}
-			else
-			{
-				loc.second.setHoverStatus(false);
-			}
-		}
-		if (isOverlap)
+		if (LocationManager::instance().updateHoverStatus(mouseViewCoords))
 		{
 			window.setMouseCursor(dr::CursorManager::get("hand"));
 		}
@@ -70,7 +52,7 @@ void AdventureScreen::init()
 {
 	ImGui::SFML::Init(dr::ImguiHelper::getWindow());
 
-	LocationManager::init(0);
+	LocationManager::instance().init(0);
 }
 
 void AdventureScreen::handleInput(const sf::Event& event, sf::RenderWindow& window)
@@ -94,7 +76,7 @@ void AdventureScreen::render(sf::RenderWindow& window)
 {
 	window.setView(mMainView);
 	window.draw(mAdventureMap);
-	for (auto& loc : LocationManager::getLocations())
+	for (const auto& loc : LocationManager::instance().getLocations())
 	{
 		if (loc.second.isHovered())
 		{

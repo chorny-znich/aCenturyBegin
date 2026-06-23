@@ -9,19 +9,22 @@
  */
 class LocationManager
 {
+private:
+  LocationManager() = default;
 public:
   LocationManager(LocationManager&) = delete;
   LocationManager& operator=(LocationManager&) = delete;
-
-  static void init(int id);
-  static std::map<std::string, Location>& getLocations();
-private:
-  LocationManager() = default;
+  
   static LocationManager& instance()
   {
     static LocationManager manager;
     return manager;
   }
+
+  void init(int id);
+  const std::map<std::string, Location>& getLocations() const;
+  bool updateHoverStatus(sf::Vector2f mouseCoords);
+private:
   std::map<std::string, Location> mLocations;
 };
 

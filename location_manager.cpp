@@ -9,7 +9,6 @@
  */
 void LocationManager::init(int id)
 {
-  auto& manager = instance();
   const std::string FILENAME = std::format("{}{}.ini", gd::path::LocationPath, id);
   dr::IniDocument doc = dr::loadIniDocument(FILENAME);
   dr::Section generalSection = doc.getSection("general");
@@ -23,7 +22,7 @@ void LocationManager::init(int id)
     loc.setName(dr::StringManager::get(section.at("name")));
     loc.setMapPosition({ std::stof(section.at("x")), std::stof(section.at("y")) }, std::stof(section.at("radius")));
     
-    manager.mLocations.insert({ id, std::move(loc) });
+    mLocations.insert({ id, std::move(loc) });
   }
 }
 
@@ -31,7 +30,33 @@ void LocationManager::init(int id)
  * @brief 
  * @return 
  */
-std::map<std::string, Location>& LocationManager::getLocations()
+const std::map<std::string, Location>& LocationManager::getLocations() const
 {
-  return instance().mLocations;
+  return mLocations;
+}
+
+/**
+ * @brief Check if the mouse cursor overlaps with locations
+ */
+bool LocationManager::updateHoverStatus(sf::Vector2f mouseCoords)
+{
+	bool isOverlap = false;
+	for (auto& loc : mLocations)
+	{
+		float dx = mouseCoords.x - loc.second.getCenter().x;
+		float dy = mouseCoords.y - loc.second.getCenter().y;
+		float distance = dx * dx + dy * dy;
+		float radius = loc.second.getRadius() * loc.second.getRadius();
+
+		if (distance <= radius)
+		{
+			loc.second.setHoverStatus(true);
+			isOverlap = true;
+		}
+		else
+		{
+			loc.second.setHoverStatus(false);
+		}
+	}
+	return isOverlap;
 }

@@ -76,7 +76,7 @@
       <Filter>Исходные файлы\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="location_manager.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\Map</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
