@@ -1,4 +1,6 @@
 #include "location_screen.h"
+#include "location_manager.h"
+#include <format>
 
 /**
  * @brief For handling Events in handleInput method
@@ -53,6 +55,12 @@ struct LocationScreen::ScreenInputVisitor
  */
 void LocationScreen::init()
 {
+	const Location& loc = LocationManager::instance().getCurrentLocation();
+	LocationManager& manager = LocationManager::instance();
+	std::string textureKey = std::format("{}_{}_{}", manager.getCurrentLocationId(), manager.getCurrentTimeOfday(),
+		manager.getCurrentWeather());
+	mBackground.setTexture(dr::Textures::get(textureKey));
+
 	sf::Text description = dr::TextManager::get("about_description");
 	description.setPosition({ 200.f, 500.f });
 	description.setString(dr::StringManager::get("about_game_content"));

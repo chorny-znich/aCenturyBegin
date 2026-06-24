@@ -58,5 +58,36 @@ bool LocationManager::updateHoverStatus(sf::Vector2f mouseCoords)
 			loc.second.setHoverStatus(false);
 		}
 	}
+	mOverlap = isOverlap;
 	return isOverlap;
+}
+
+std::string_view LocationManager::getCurrentTimeOfday() const
+{
+	return mCurrentTimeOfDay;
+}
+
+std::string_view LocationManager::getCurrentWeather() const
+{
+	return mCurrentWeather;
+}
+
+std::string_view LocationManager::getCurrentLocationId() const
+{
+	return mCurrentLocationId;
+}
+
+void LocationManager::setCurrentLocationId(const std::string& id)
+{
+	mCurrentLocationId = id;
+}
+
+const Location& LocationManager::getCurrentLocation() const
+{
+	return mLocations.at(mCurrentLocationId);
+}
+
+bool LocationManager::isOverlap() const
+{
+	return mOverlap;
 }

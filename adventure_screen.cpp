@@ -36,7 +36,7 @@ struct AdventureScreen::ScreenInputVisitor
 	 */
 	void operator()(const sf::Event::MouseButtonPressed mouseButton)
 	{
-		if (mouseButton.button == sf::Mouse::Button::Left)
+		if (mouseButton.button == sf::Mouse::Button::Left && )
 		{
 			sf::Vector2f mouseViewCoords = window.mapPixelToCoords(mouseButton.position);
 		}
