@@ -60,11 +60,12 @@ void LocationScreen::init()
 	std::string textureKey = std::format("{}_{}_{}", manager.getCurrentLocationId(), manager.getCurrentTimeOfday(),
 		manager.getCurrentWeather());
 	mBackground.emplace(dr::Textures::get(textureKey));
+	mBackground->setPosition({ 0.f, 100.f });
 
-	sf::Text description = dr::TextManager::get("about_description");
-	description.setPosition({ 200.f, 500.f });
-	description.setString(dr::StringManager::get("about_game_content"));
-	mInfo.push_back(description);
+	sf::Text locationtitle = dr::TextManager::get("location_title");
+	locationtitle.setPosition({ 800.f, 5.f });
+	locationtitle.setString(loc.getName());
+	mInfo.push_back(locationtitle);
 
 	sf::Text version = dr::TextManager::get("about_version");
 	version.setPosition({ 900.f, 600.f });

@@ -55,6 +55,11 @@ void Location::setName(sf::String locName)
   mName = locName;
 }
 
+sf::String Location::getName() const
+{
+  return mName;
+}
+
 /**
  * @brief 
  * @param status 

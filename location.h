@@ -16,6 +16,7 @@ public:
   sf::Vector2f getCenter() const;
   float getRadius() const;
   void setName(sf::String locName);
+  sf::String getName() const;
   void setHoverStatus(bool status);
   bool isHovered() const;
 private:
