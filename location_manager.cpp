@@ -51,6 +51,7 @@ bool LocationManager::updateHoverStatus(sf::Vector2f mouseCoords)
 		if (distance <= radius)
 		{
 			loc.second.setHoverStatus(true);
+			mCurrentLocationId = loc.second.getId();
 			isOverlap = true;
 		}
 		else

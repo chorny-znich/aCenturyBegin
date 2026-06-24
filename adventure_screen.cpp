@@ -1,5 +1,6 @@
 #include "adventure_screen.h"
 #include "location_manager.h"
+#include "location_screen.h"
 #include <format>
 #include <imgui.h>
 #include <imgui-SFML.h>
@@ -36,9 +37,10 @@ struct AdventureScreen::ScreenInputVisitor
 	 */
 	void operator()(const sf::Event::MouseButtonPressed mouseButton)
 	{
-		if (mouseButton.button == sf::Mouse::Button::Left && )
+		if (mouseButton.button == sf::Mouse::Button::Left && LocationManager::instance().isOverlap())
 		{
 			sf::Vector2f mouseViewCoords = window.mapPixelToCoords(mouseButton.position);
+			dr::ScreenManager::addScreen<LocationScreen>("location_screen");
 		}
 	}
 

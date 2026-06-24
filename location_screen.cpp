@@ -59,7 +59,7 @@ void LocationScreen::init()
 	LocationManager& manager = LocationManager::instance();
 	std::string textureKey = std::format("{}_{}_{}", manager.getCurrentLocationId(), manager.getCurrentTimeOfday(),
 		manager.getCurrentWeather());
-	mBackground.setTexture(dr::Textures::get(textureKey));
+	mBackground.emplace(dr::Textures::get(textureKey));
 
 	sf::Text description = dr::TextManager::get("about_description");
 	description.setPosition({ 200.f, 500.f });
@@ -87,7 +87,7 @@ void LocationScreen::update(float dt)
 void LocationScreen::render(sf::RenderWindow& window)
 {
 	window.setView(mMainView);
-	window.draw(mBackground);
+	window.draw(*mBackground);
 
 	for (const auto& txt : mInfo)
 	{

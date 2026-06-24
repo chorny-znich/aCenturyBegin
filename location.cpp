@@ -12,6 +12,11 @@ Location::Location(const std::string& id) :
 {
 }
 
+std::string_view Location::getId() const
+{
+    return mId;
+}
+
 /**
  * @brief set the position of the location on the adventure map
  * @param centerPos position of the

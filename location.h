@@ -11,6 +11,7 @@ class Location
 {
 public:
   Location(const std::string& id);
+  std::string_view getId() const;
   void setMapPosition(sf::Vector2f centerPos, float radius);
   sf::Vector2f getCenter() const;
   float getRadius() const;
