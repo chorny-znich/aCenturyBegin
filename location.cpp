@@ -60,6 +60,16 @@ sf::String Location::getName() const
   return mName;
 }
 
+void Location::setDescription(sf::String text)
+{
+  mDescription = text;
+}
+
+sf::String Location::getDescription() const
+{
+  return mDescription;
+}
+
 /**
  * @brief 
  * @param status 

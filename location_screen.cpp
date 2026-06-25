@@ -67,13 +67,13 @@ void LocationScreen::init()
 	locationtitle.setString(loc.getName());
 	mInfo.push_back(locationtitle);
 
-	sf::Text version = dr::TextManager::get("about_version");
-	version.setPosition({ 900.f, 600.f });
-	version.setString(dr::StringManager::get("about_game_version"));
-	mInfo.push_back(version);
+	sf::Text locDescription = dr::TextManager::get("location_description");
+	locDescription.setPosition({ 300.f, 1020.f });
+	locDescription.setString(loc.getDescription());
+	mInfo.push_back(locDescription);
 
 	mBackButton.setString(dr::StringManager::get("back_button"));
-	mBackButton.setPosition({ 865.f, 1000.f });
+	mBackButton.setPosition({ 1600.f, 800.f });
 }
 
 void LocationScreen::handleInput(const sf::Event& event, sf::RenderWindow& window)

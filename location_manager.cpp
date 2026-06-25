@@ -20,6 +20,7 @@ void LocationManager::init(int id)
     std::string id = section.at("id");
     Location loc(id);
     loc.setName(dr::StringManager::get(section.at("name")));
+		loc.setDescription(section.at("description"));
     loc.setMapPosition({ std::stof(section.at("x")), std::stof(section.at("y")) }, std::stof(section.at("radius")));
     
     mLocations.insert({ id, std::move(loc) });

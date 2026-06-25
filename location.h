@@ -17,6 +17,8 @@ public:
   float getRadius() const;
   void setName(sf::String locName);
   sf::String getName() const;
+  void setDescription(sf::String text);
+  sf::String getDescription() const;
   void setHoverStatus(bool status);
   bool isHovered() const;
 private:
@@ -24,5 +26,6 @@ private:
   sf::Vector2f mCenter;
   float mRadius;
   sf::String mName;
+  sf::String mDescription;
   bool mHovered;
 };
