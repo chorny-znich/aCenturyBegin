@@ -37,6 +37,12 @@
     <Filter Include="Исходные файлы\ImGui">
       <UniqueIdentifier>{18c735ff-fe34-45e6-a906-0c2e3a4b8423}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\GameMechanics">
+      <UniqueIdentifier>{e054cba1-6139-483a-a719-74a07faf73ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\GameMechanics">
+      <UniqueIdentifier>{173db49b-8039-408d-8f4e-a89c203de05d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -80,6 +86,9 @@
     </ClCompile>
     <ClCompile Include="location_screen.cpp">
       <Filter>Исходные файлы\Screen</Filter>
+    </ClCompile>
+    <ClCompile Include="world_state_manager.cpp">
+      <Filter>Исходные файлы\GameMechanics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -131,6 +140,9 @@
     <ClInclude Include="location_screen.h">
       <Filter>Файлы заголовков\Screen</Filter>
     </ClInclude>
+    <ClInclude Include="world_state_manager.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="config\engine_config.ini">
@@ -146,6 +158,9 @@
       <Filter>Файлы ресурсов</Filter>
     </None>
     <None Include="data\font_list.ini">
+      <Filter>Файлы ресурсов</Filter>
+    </None>
+    <None Include="maps\location_0.ini">
       <Filter>Файлы ресурсов</Filter>
     </None>
   </ItemGroup>

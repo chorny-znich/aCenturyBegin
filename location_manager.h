@@ -1,6 +1,7 @@
 #pragma once
 #include "location.h"
 #include <string>
+#include <vector>
 #include <map>
 #include <memory>
 
@@ -34,8 +35,6 @@ public:
   bool isOverlap() const;
 private:
   std::map<std::string, Location> mLocations;
-  std::string mCurrentTimeOfDay{"day"};
-  std::string mCurrentWeather{"sunny"};
   std::string mCurrentLocationId{};
   bool mOverlap{ false };
 };
