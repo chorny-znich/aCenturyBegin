@@ -64,16 +64,6 @@ bool LocationManager::updateHoverStatus(sf::Vector2f mouseCoords)
 	return isOverlap;
 }
 
-std::string_view LocationManager::getCurrentTimeOfday() const
-{
-	return mCurrentTimeOfDay;
-}
-
-std::string_view LocationManager::getCurrentWeather() const
-{
-	return mCurrentWeather;
-}
-
 std::string_view LocationManager::getCurrentLocationId() const
 {
 	return mCurrentLocationId;

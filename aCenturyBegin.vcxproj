@@ -171,6 +171,7 @@
     <ClInclude Include="location_screen.h" />
     <ClInclude Include="main_menu_screen.h" />
     <ClInclude Include="world_state_manager.h" />
+    <ClInclude Include="world_types.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="config\engine_config.ini" />

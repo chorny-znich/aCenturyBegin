@@ -20,9 +20,18 @@ public:
     static WorldStateManager manager;
     return manager;
   }
+
+  void advancetime(uint32_t minutes);
+  std::string_view getCurrentTimeOfday() const;
+  std::string_view getCurrentWeather() const;
 private:
   std::string mCurrentTimeOfDay{ "day" };
   std::string mCurrentWeather{ "sunny" };
   uint32_t mTotalTime{ 480 }; // In minutes
+
+  uint32_t getDay() const;
+  uint32_t getHours() const;
+  uint32_t getMinutes() const;
+
 };
 

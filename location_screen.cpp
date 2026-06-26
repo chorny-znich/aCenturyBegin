@@ -1,5 +1,6 @@
 #include "location_screen.h"
 #include "location_manager.h"
+#include "world_state_manager.h"
 #include <format>
 
 /**
@@ -56,9 +57,10 @@ struct LocationScreen::ScreenInputVisitor
 void LocationScreen::init()
 {
 	const Location& loc = LocationManager::instance().getCurrentLocation();
-	LocationManager& manager = LocationManager::instance();
-	std::string textureKey = std::format("{}_{}_{}", manager.getCurrentLocationId(), manager.getCurrentTimeOfday(),
-		manager.getCurrentWeather());
+	LocationManager& locManager = LocationManager::instance();
+	WorldStateManager& worldManager = WorldStateManager::instance();
+	std::string textureKey = std::format("{}_{}_{}", locManager.getCurrentLocationId(), worldManager.getCurrentTimeOfday(),
+		worldManager.getCurrentWeather());
 	mBackground.emplace(dr::Textures::get(textureKey));
 	mBackground->setPosition({ 0.f, 100.f });
 
