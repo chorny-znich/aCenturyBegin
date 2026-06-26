@@ -9,10 +9,17 @@ namespace gd
     Morning,
     Day,
     Evening,
-    Night
+    Night,
+    Unknown
   };
 
-  inline std::string getDayPhaseName(DayPhase phase)
+  enum class Weather : uint8_t
+  {
+    Sunny,
+    Unknown
+  };
+
+  inline std::string_view getDayPhaseName(DayPhase phase)
   {
     switch (phase)
     {
@@ -20,6 +27,15 @@ namespace gd
     case DayPhase::Day: return "day";
     case DayPhase::Evening: return "evening";
     case DayPhase::Night: return "night";
+    }
+    return "unknown";
+  }
+
+  inline std::string_view getWeather(Weather weather)
+  {
+    switch (weather)
+    {
+    case Weather::Sunny: return "sunny";
     }
   }
 }

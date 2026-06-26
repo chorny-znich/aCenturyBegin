@@ -1,5 +1,6 @@
 #include "adventure_screen.h"
 #include "location_manager.h"
+#include "world_state_manager.h"
 #include "location_screen.h"
 #include <format>
 #include <imgui.h>
@@ -40,7 +41,8 @@ struct AdventureScreen::ScreenInputVisitor
 		if (mouseButton.button == sf::Mouse::Button::Left && LocationManager::instance().isOverlap())
 		{
 			sf::Vector2f mouseViewCoords = window.mapPixelToCoords(mouseButton.position);
-			dr::ScreenManager::addScreen<LocationScreen>("location_screen");
+			WorldStateManager::instance().advanceTime(240);
+			//dr::ScreenManager::addScreen<LocationScreen>("location_screen");
 		}
 	}
 
@@ -71,6 +73,11 @@ void AdventureScreen::update(float dt)
 	ImGui::Begin("Debug input");
 	ImGui::Text(std::format("x: {}", mouseViewCoords.x).c_str());
 	ImGui::Text(std::format("y: {}", mouseViewCoords.y).c_str());
+	ImGui::End();
+
+	std::string dayPhase = WorldStateManager::instance().getCurrentTimeOfday().data();
+	ImGui::Begin("World state");
+	ImGui::Text(std::format("Phase of day: {}", dayPhase).c_str());
 	ImGui::End();
 }
 

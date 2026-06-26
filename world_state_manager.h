@@ -1,4 +1,5 @@
 #pragma once
+#include "world_types.h"
 #include <string>
 #include <vector>
 
@@ -9,9 +10,6 @@ class WorldStateManager
 {
 private:
   WorldStateManager() = default;
-  
-  const std::vector<std::string> PhaseOfDay{ "morning", "day", "evening", "night" };
-  const std::vector<std::string> Weather{ "sunny", "rain", "foggy" };
 public:
   WorldStateManager(const WorldStateManager&) = delete;
   WorldStateManager& operator=(const WorldStateManager&) = delete;
@@ -21,17 +19,16 @@ public:
     return manager;
   }
 
-  void advancetime(uint32_t minutes);
+  void advanceTime(uint32_t minutes);
   std::string_view getCurrentTimeOfday() const;
   std::string_view getCurrentWeather() const;
 private:
-  std::string mCurrentTimeOfDay{ "day" };
-  std::string mCurrentWeather{ "sunny" };
+  gd::DayPhase mCurrentDayPhase{gd::DayPhase::Morning};
+  gd::Weather mCurrentWeather{ gd::Weather::Sunny };
   uint32_t mTotalTime{ 480 }; // In minutes
 
+  gd::DayPhase calculateDayPhase(uint32_t hours);
   uint32_t getDay() const;
   uint32_t getHours() const;
   uint32_t getMinutes() const;
-
 };
-
