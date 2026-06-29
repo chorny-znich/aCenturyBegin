@@ -35,4 +35,3 @@ private:
   std::string mCurrentLocationId{};
   bool mOverlap{ false };
 };
-

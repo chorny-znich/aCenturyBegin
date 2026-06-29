@@ -2,6 +2,8 @@
 #include "location_manager.h"
 #include "world_state_manager.h"
 #include <format>
+#include <imgui.h>
+#include <imgui-SFML.h>
 
 /**
  * @brief For handling Events in handleInput method
@@ -85,6 +87,15 @@ void LocationScreen::handleInput(const sf::Event& event, sf::RenderWindow& windo
 
 void LocationScreen::update(float dt)
 {
+	const Location& loc = LocationManager::instance().getCurrentLocation();
+	LocationManager& locManager = LocationManager::instance();
+	WorldStateManager& worldManager = WorldStateManager::instance();
+	std::string dayPhase = WorldStateManager::instance().getCurrentTimeOfday().data();
+	std::string textureKey = std::format("{}_{}_{}", locManager.getCurrentLocationId(), worldManager.getCurrentTimeOfday(),
+		worldManager.getCurrentWeather());
+	ImGui::Begin("World state");
+	ImGui::Text(std::format("Phase of day: {}", dayPhase).c_str());
+	ImGui::End();
 }
 
 void LocationScreen::render(sf::RenderWindow& window)
