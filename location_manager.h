@@ -11,17 +11,10 @@
  */
 class LocationManager
 {
-private:
-  LocationManager() = default;
 public:
+  LocationManager() = default;
   LocationManager(LocationManager&) = delete;
   LocationManager& operator=(LocationManager&) = delete;
-  
-  static LocationManager& instance()
-  {
-    static LocationManager manager;
-    return manager;
-  }
 
   void init(int id);
   const std::map<std::string, Location>& getLocations() const;

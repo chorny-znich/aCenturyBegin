@@ -22,7 +22,7 @@ struct AdventureScreen::ScreenInputVisitor
 	void operator()(const sf::Event::MouseMoved& mouseMoved)
 	{
 		sf::Vector2f mouseViewCoords = window.mapPixelToCoords(mouseMoved.position);
-		if (LocationManager::instance().updateHoverStatus(mouseViewCoords))
+		if (screen.mGameWorld->getLocationManager().updateHoverStatus(mouseViewCoords))
 		{
 			window.setMouseCursor(dr::CursorManager::get("hand"));
 		}
@@ -38,7 +38,7 @@ struct AdventureScreen::ScreenInputVisitor
 	 */
 	void operator()(const sf::Event::MouseButtonPressed mouseButton)
 	{
-		if (mouseButton.button == sf::Mouse::Button::Left && LocationManager::instance().isOverlap())
+		if (mouseButton.button == sf::Mouse::Button::Left && screen.mGameWorld->getLocationManager().isOverlap())
 		{
 			sf::Vector2f mouseViewCoords = window.mapPixelToCoords(mouseButton.position);
 			WorldStateManager::instance().advanceTime(240);
@@ -55,8 +55,8 @@ struct AdventureScreen::ScreenInputVisitor
 void AdventureScreen::init()
 {
 	ImGui::SFML::Init(dr::ImguiHelper::getWindow());
-
-	LocationManager::instance().init(0);
+	mGameWorld = std::make_unique<GameWorld>();
+	mGameWorld->init();
 }
 
 void AdventureScreen::handleInput(const sf::Event& event, sf::RenderWindow& window)
@@ -85,7 +85,7 @@ void AdventureScreen::render(sf::RenderWindow& window)
 {
 	window.setView(mMainView);
 	window.draw(mAdventureMap);
-	for (const auto& loc : LocationManager::instance().getLocations())
+	for (const auto& loc : mGameWorld->getLocationManager().getLocations())
 	{
 		if (loc.second.isHovered())
 		{

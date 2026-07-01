@@ -90,6 +90,9 @@
     <ClCompile Include="world_state_manager.cpp">
       <Filter>Исходные файлы\GameMechanics</Filter>
     </ClCompile>
+    <ClCompile Include="game_world.cpp">
+      <Filter>Исходные файлы\GameMechanics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game_engine.h">
@@ -144,6 +147,9 @@
       <Filter>Файлы заголовков\GameMechanics</Filter>
     </ClInclude>
     <ClInclude Include="world_types.h">
+      <Filter>Файлы заголовков\GameMechanics</Filter>
+    </ClInclude>
+    <ClInclude Include="game_world.h">
       <Filter>Файлы заголовков\GameMechanics</Filter>
     </ClInclude>
   </ItemGroup>
