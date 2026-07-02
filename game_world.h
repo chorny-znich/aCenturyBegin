@@ -21,7 +21,11 @@ public:
 	const LocationManager& getLocationManager() const;
 	WorldStateManager& getWorldStateManager();
 	const WorldStateManager& getWorldStateManager() const;
+
+	void setPlayerLocation(const std::string& loc);
+	const std::string& getPlayerLocation() const;
 private:
 	LocationManager mLocationManager;
 	WorldStateManager mWorldStateManager;
+	std::string mPlayerLocation{"railway_station"};
 };

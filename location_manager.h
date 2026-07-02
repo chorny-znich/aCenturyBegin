@@ -22,6 +22,7 @@ public:
   std::string_view getCurrentLocationId() const;
   void setCurrentLocationId(const std::string& id);
   const Location& getCurrentLocation() const;
+  const Location& getLocation(const std::string& id) const;
   bool isOverlap() const;
 private:
   std::map<std::string, Location> mLocations;

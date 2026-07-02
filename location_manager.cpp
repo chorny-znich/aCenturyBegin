@@ -2,6 +2,7 @@
 #include "game_data.h"
 #include <disreality_engine.h>
 #include <format>
+#include <cassert>
 
 /**
  * @brief 
@@ -77,6 +78,18 @@ void LocationManager::setCurrentLocationId(const std::string& id)
 const Location& LocationManager::getCurrentLocation() const
 {
 	return mLocations.at(mCurrentLocationId);
+}
+
+/**
+ * @brief Get location by its id
+ * @param id 
+ * @return 
+ */
+const Location& LocationManager::getLocation(const std::string& id) const
+{
+	auto iter = mLocations.find(id);
+	assert(iter != mLocations.end());
+	return iter->second;
 }
 
 bool LocationManager::isOverlap() const

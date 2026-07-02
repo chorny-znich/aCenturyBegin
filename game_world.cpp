@@ -24,3 +24,13 @@ const WorldStateManager& GameWorld::getWorldStateManager() const
 {
 	return mWorldStateManager;
 }
+
+void GameWorld::setPlayerLocation(const std::string& loc)
+{
+	mPlayerLocation = loc;
+}
+
+const std::string& GameWorld::getPlayerLocation() const
+{
+	return mPlayerLocation;
+}

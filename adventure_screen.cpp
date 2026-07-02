@@ -57,6 +57,12 @@ void AdventureScreen::init()
 {
 	ImGui::SFML::Init(dr::ImguiHelper::getWindow());
 	GameWorld::instance().init();
+
+	mPlayerMarker.setOrigin({ 70.f, 70.f });
+	const Location& loc = GameWorld::instance().getLocationManager().getLocation(GameWorld::instance().getPlayerLocation());
+	mPlayerMarker.setPosition(loc.getCenter());
+	mPlayerMarker.setFillColor({ 255, 0, 0, 120 });
+	
 }
 
 void AdventureScreen::handleInput(const sf::Event& event, sf::RenderWindow& window)
@@ -96,5 +102,9 @@ void AdventureScreen::render(sf::RenderWindow& window)
 			window.draw(circle);
 		}
 	}
+
+	// Draw player's marker
+	window.draw(mPlayerMarker);
+
 	ImGui::SFML::Render(window);
 }

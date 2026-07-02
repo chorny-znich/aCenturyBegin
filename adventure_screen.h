@@ -21,5 +21,5 @@ private:
 	sf::View mMainView{ sf::FloatRect({0, 0}, {gd::GraphicsResolution.x, gd::GraphicsResolution.y}) };
 	sf::Sprite mAdventureMap{dr::Textures::get("adventure_map_0")};
 
-	sf::CircleShape mPlayerMarker;
+	sf::CircleShape mPlayerMarker{ 70.f };
 };
