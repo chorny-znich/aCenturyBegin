@@ -1,5 +1,4 @@
 #pragma once
-#include "game_world.h"
 #include "game_data.h"
 #include <disreality_engine.h>
 #include <memory>
@@ -22,6 +21,5 @@ private:
 	sf::View mMainView{ sf::FloatRect({0, 0}, {gd::GraphicsResolution.x, gd::GraphicsResolution.y}) };
 	sf::Sprite mAdventureMap{dr::Textures::get("adventure_map_0")};
 
-	std::unique_ptr<GameWorld> mGameWorld;
 	sf::CircleShape mPlayerMarker;
 };

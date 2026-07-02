@@ -105,7 +105,7 @@
       <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalIncludeDirectories>D:\vargar\repository\game\aCenturyBegin\ImGui;D:\vargar\repository\game\aCenturyBegin\imgui;D:\vargar\repository\lib\DisRealityEngine\include;D:\vargar\repository\lib\SFML3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
-      <DisableSpecificWarnings>4996</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4996;4834</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

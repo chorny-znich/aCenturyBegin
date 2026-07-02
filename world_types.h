@@ -15,7 +15,7 @@ namespace gd
 
   enum class Weather : uint8_t
   {
-    Sunny,
+    Clear,
     Unknown
   };
 
@@ -35,7 +35,8 @@ namespace gd
   {
     switch (weather)
     {
-    case Weather::Sunny: return "sunny";
+    case Weather::Clear: return "clear";
     }
+    return "unknown";
   }
 }

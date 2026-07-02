@@ -14,3 +14,13 @@ const LocationManager& GameWorld::getLocationManager() const
 {
 	return mLocationManager;
 }
+
+WorldStateManager& GameWorld::getWorldStateManager()
+{
+	return mWorldStateManager;
+}
+
+const WorldStateManager& GameWorld::getWorldStateManager() const
+{
+	return mWorldStateManager;
+}

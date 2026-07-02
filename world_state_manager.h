@@ -7,24 +7,18 @@
  * @brief 
  */
 class WorldStateManager
-{
-private:
-  WorldStateManager() = default;
+{  
 public:
+  WorldStateManager() = default;
   WorldStateManager(const WorldStateManager&) = delete;
   WorldStateManager& operator=(const WorldStateManager&) = delete;
-  static WorldStateManager& instance()
-  {
-    static WorldStateManager manager;
-    return manager;
-  }
 
   void advanceTime(uint32_t minutes);
   std::string_view getCurrentTimeOfday() const;
   std::string_view getCurrentWeather() const;
 private:
   gd::DayPhase mCurrentDayPhase{gd::DayPhase::Morning};
-  gd::Weather mCurrentWeather{ gd::Weather::Sunny };
+  gd::Weather mCurrentWeather{ gd::Weather::Clear };
   uint32_t mTotalTime{ 480 }; // In minutes
 
   gd::DayPhase calculateDayPhase(uint32_t hours);

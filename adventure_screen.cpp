@@ -1,6 +1,7 @@
 #include "adventure_screen.h"
 #include "location_manager.h"
 #include "world_state_manager.h"
+#include "game_world.h"
 #include "location_screen.h"
 #include <format>
 #include <imgui.h>
@@ -22,7 +23,7 @@ struct AdventureScreen::ScreenInputVisitor
 	void operator()(const sf::Event::MouseMoved& mouseMoved)
 	{
 		sf::Vector2f mouseViewCoords = window.mapPixelToCoords(mouseMoved.position);
-		if (screen.mGameWorld->getLocationManager().updateHoverStatus(mouseViewCoords))
+		if (GameWorld::instance().getLocationManager().updateHoverStatus(mouseViewCoords))
 		{
 			window.setMouseCursor(dr::CursorManager::get("hand"));
 		}
@@ -38,10 +39,10 @@ struct AdventureScreen::ScreenInputVisitor
 	 */
 	void operator()(const sf::Event::MouseButtonPressed mouseButton)
 	{
-		if (mouseButton.button == sf::Mouse::Button::Left && screen.mGameWorld->getLocationManager().isOverlap())
+		if (mouseButton.button == sf::Mouse::Button::Left && GameWorld::instance().getLocationManager().isOverlap())
 		{
 			sf::Vector2f mouseViewCoords = window.mapPixelToCoords(mouseButton.position);
-			WorldStateManager::instance().advanceTime(240);
+			GameWorld::instance().getWorldStateManager().advanceTime(240);
 			//dr::ScreenManager::addScreen<LocationScreen>("location_screen");
 		}
 	}
@@ -55,8 +56,7 @@ struct AdventureScreen::ScreenInputVisitor
 void AdventureScreen::init()
 {
 	ImGui::SFML::Init(dr::ImguiHelper::getWindow());
-	mGameWorld = std::make_unique<GameWorld>();
-	mGameWorld->init();
+	GameWorld::instance().init();
 }
 
 void AdventureScreen::handleInput(const sf::Event& event, sf::RenderWindow& window)
@@ -75,7 +75,7 @@ void AdventureScreen::update(float dt)
 	ImGui::Text(std::format("y: {}", mouseViewCoords.y).c_str());
 	ImGui::End();
 
-	std::string dayPhase = WorldStateManager::instance().getCurrentTimeOfday().data();
+	std::string dayPhase = GameWorld::instance().getWorldStateManager().getCurrentTimeOfday().data();
 	ImGui::Begin("World state");
 	ImGui::Text(std::format("Phase of day: {}", dayPhase).c_str());
 	ImGui::End();
@@ -85,7 +85,7 @@ void AdventureScreen::render(sf::RenderWindow& window)
 {
 	window.setView(mMainView);
 	window.draw(mAdventureMap);
-	for (const auto& loc : mGameWorld->getLocationManager().getLocations())
+	for (const auto& loc : GameWorld::instance().getLocationManager().getLocations())
 	{
 		if (loc.second.isHovered())
 		{

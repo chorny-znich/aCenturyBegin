@@ -1,5 +1,5 @@
 #include "location_screen.h"
-#include "location_manager.h"
+#include "game_world.h"
 #include "world_state_manager.h"
 #include <format>
 #include <imgui.h>
@@ -58,9 +58,9 @@ struct LocationScreen::ScreenInputVisitor
  */
 void LocationScreen::init()
 {
-	const Location& loc = LocationManager::instance().getCurrentLocation();
-	LocationManager& locManager = LocationManager::instance();
-	WorldStateManager& worldManager = WorldStateManager::instance();
+	LocationManager& locManager = GameWorld::instance().getLocationManager();
+	const Location& loc = locManager.getCurrentLocation();
+	WorldStateManager& worldManager = GameWorld::instance().getWorldStateManager();
 	std::string textureKey = std::format("{}_{}_{}", locManager.getCurrentLocationId(), worldManager.getCurrentTimeOfday(),
 		worldManager.getCurrentWeather());
 	mBackground.emplace(dr::Textures::get(textureKey));
@@ -87,10 +87,10 @@ void LocationScreen::handleInput(const sf::Event& event, sf::RenderWindow& windo
 
 void LocationScreen::update(float dt)
 {
-	const Location& loc = LocationManager::instance().getCurrentLocation();
-	LocationManager& locManager = LocationManager::instance();
-	WorldStateManager& worldManager = WorldStateManager::instance();
-	std::string dayPhase = WorldStateManager::instance().getCurrentTimeOfday().data();
+	LocationManager& locManager = GameWorld::instance().getLocationManager();
+	const Location& loc = locManager.getCurrentLocation();
+	WorldStateManager& worldManager = GameWorld::instance().getWorldStateManager();
+	std::string dayPhase = GameWorld::instance().getWorldStateManager().getCurrentTimeOfday().data();
 	std::string textureKey = std::format("{}_{}_{}", locManager.getCurrentLocationId(), worldManager.getCurrentTimeOfday(),
 		worldManager.getCurrentWeather());
 	ImGui::Begin("World state");
