@@ -172,5 +172,8 @@
     <None Include="maps\location_0.ini">
       <Filter>Файлы ресурсов</Filter>
     </None>
+    <None Include="data\tile_map.ini">
+      <Filter>Файлы ресурсов</Filter>
+    </None>
   </ItemGroup>
 </Project>

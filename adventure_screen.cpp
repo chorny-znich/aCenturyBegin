@@ -42,7 +42,11 @@ struct AdventureScreen::ScreenInputVisitor
 		if (mouseButton.button == sf::Mouse::Button::Left && GameWorld::instance().getLocationManager().isOverlap())
 		{
 			sf::Vector2f mouseViewCoords = window.mapPixelToCoords(mouseButton.position);
+			LocationManager& locManager = GameWorld::instance().getLocationManager();
+			const Location& loc = locManager.getCurrentLocation();
+
 			GameWorld::instance().getWorldStateManager().advanceTime(240);
+			GameWorld::instance().setPlayerLocation(loc.getId().data());
 			//dr::ScreenManager::addScreen<LocationScreen>("location_screen");
 		}
 	}
@@ -71,6 +75,10 @@ void AdventureScreen::handleInput(const sf::Event& event, sf::RenderWindow& wind
 	event.visit(ScreenInputVisitor{ *this, window });
 }
 
+/**
+ * @brief 
+ * @param dt 
+ */
 void AdventureScreen::update(float dt)
 {
 	ImGui::SFML::Update(dr::ImguiHelper::getWindow(), dr::ImguiHelper::getTime());
@@ -85,12 +93,21 @@ void AdventureScreen::update(float dt)
 	ImGui::Begin("World state");
 	ImGui::Text(std::format("Phase of day: {}", dayPhase).c_str());
 	ImGui::End();
+
+	const Location& loc = GameWorld::instance().getLocationManager().getLocation(GameWorld::instance().getPlayerLocation());
+	mPlayerMarker.setPosition(loc.getCenter());
 }
 
+/**
+ * @brief 
+ * @param window 
+ */
 void AdventureScreen::render(sf::RenderWindow& window)
 {
 	window.setView(mMainView);
 	window.draw(mAdventureMap);
+
+	// draw a circle over the hovered location
 	for (const auto& loc : GameWorld::instance().getLocationManager().getLocations())
 	{
 		if (loc.second.isHovered())
