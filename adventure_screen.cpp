@@ -47,7 +47,7 @@ struct AdventureScreen::ScreenInputVisitor
 
 			GameWorld::instance().getWorldStateManager().advanceTime(240);
 			GameWorld::instance().setPlayerLocation(loc.getId().data());
-			//dr::ScreenManager::addScreen<LocationScreen>("location_screen");
+			dr::ScreenManager::addScreen<LocationScreen>("location_screen");
 		}
 	}
 

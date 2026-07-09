@@ -64,6 +64,7 @@ void LocationScreen::init()
 	std::string textureKey = std::format("{}_{}_{}", locManager.getCurrentLocationId(), worldManager.getCurrentTimeOfday(),
 		worldManager.getCurrentWeather());
 	mBackground.emplace(dr::Textures::get(textureKey));
+	mBackground->setScale({ 1600.f / 1920.f, 900.f / 1080.f });
 	mBackground->setPosition({ 0.f, 100.f });
 
 	sf::Text locationtitle = dr::TextManager::get("location_title");
@@ -77,7 +78,7 @@ void LocationScreen::init()
 	mInfo.push_back(locDescription);
 
 	mBackButton.setString(dr::StringManager::get("back_button"));
-	mBackButton.setPosition({ 1600.f, 800.f });
+	mBackButton.setPosition({ 1700.f, 800.f });
 }
 
 void LocationScreen::handleInput(const sf::Event& event, sf::RenderWindow& window)
@@ -93,9 +94,10 @@ void LocationScreen::update(float dt)
 	std::string dayPhase = GameWorld::instance().getWorldStateManager().getCurrentTimeOfday().data();
 	std::string textureKey = std::format("{}_{}_{}", locManager.getCurrentLocationId(), worldManager.getCurrentTimeOfday(),
 		worldManager.getCurrentWeather());
+	/*
 	ImGui::Begin("World state");
 	ImGui::Text(std::format("Phase of day: {}", dayPhase).c_str());
-	ImGui::End();
+	ImGui::End();*/
 }
 
 void LocationScreen::render(sf::RenderWindow& window)
