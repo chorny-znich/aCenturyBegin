@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <string_view>
+#include <vector>
 #include <SFML/System/Vector2.hpp>
 #include<SFML/System/String.hpp>
 
@@ -21,6 +22,8 @@ public:
   sf::String getDescription() const;
   void setHoverStatus(bool status);
   bool isHovered() const;
+
+  void addConnection(const std::string& loc, uint16_t time);
 private:
   std::string mId;
   sf::Vector2f mCenter;
@@ -28,4 +31,5 @@ private:
   sf::String mName;
   sf::String mDescription;
   bool mHovered;
+  std::vector < std::pair<std::string, uint16_t>> mConnections;
 };

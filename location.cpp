@@ -87,3 +87,13 @@ bool Location::isHovered() const
 {
   return mHovered;
 }
+
+/**
+ * @brief add a location that connected with this and time to reach connected location
+ * @param loc - location connected with this 
+ * @param time - time to reach the connected location
+ */
+void Location::addConnection(const std::string& loc, uint16_t time)
+{
+  mConnections.push_back({ loc, time });
+}
