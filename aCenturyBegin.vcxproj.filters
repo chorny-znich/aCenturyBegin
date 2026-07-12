@@ -43,6 +43,9 @@
     <Filter Include="Исходные файлы\GameMechanics">
       <UniqueIdentifier>{173db49b-8039-408d-8f4e-a89c203de05d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы ресурсов\Map">
+      <UniqueIdentifier>{b516f108-2bb2-43b4-9eab-422b5d433061}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -169,11 +172,14 @@
     <None Include="data\font_list.ini">
       <Filter>Файлы ресурсов</Filter>
     </None>
-    <None Include="maps\location_0.ini">
-      <Filter>Файлы ресурсов</Filter>
-    </None>
     <None Include="data\tile_map.ini">
       <Filter>Файлы ресурсов</Filter>
+    </None>
+    <None Include="maps\location_0.ini">
+      <Filter>Файлы ресурсов\Map</Filter>
+    </None>
+    <None Include="maps\distances_0.ini">
+      <Filter>Файлы ресурсов\Map</Filter>
     </None>
   </ItemGroup>
 </Project>

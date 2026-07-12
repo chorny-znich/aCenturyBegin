@@ -182,6 +182,7 @@
     <None Include="data\texture_list.ini" />
     <None Include="data\text_style.ini" />
     <None Include="data\tile_map.ini" />
+    <None Include="maps\distances_0.ini" />
     <None Include="maps\location_0.ini" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
