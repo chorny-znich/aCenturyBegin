@@ -10,20 +10,32 @@
  */
 void LocationManager::init(int id)
 {
-  const std::string FILENAME = std::format("{}{}.ini", gd::path::LocationPath, id);
-  dr::IniDocument doc = dr::loadIniDocument(FILENAME);
-  dr::Section generalSection = doc.getSection("general");
+  const std::string FILENAME_LOC = std::format("{}{}.ini", gd::path::LocationPath, id);
+  const std::string FILENAME_DIST = std::format("{}{}.ini", gd::path::DistancePath, id);
+
+  dr::IniDocument docLoc = dr::loadIniDocument(FILENAME_LOC);
+  dr::IniDocument docDist = dr::loadIniDocument(FILENAME_DIST);
+  dr::Section generalSection = docLoc.getSection("general");
   size_t locAmount = std::stoul(generalSection.at("size"));
 
   for (size_t i{ 0 }; i < locAmount; i++) {
     std::string sectionName = "location_" + std::to_string(i);
-    dr::Section section = doc.getSection(sectionName);
+    dr::Section section = docLoc.getSection(sectionName);
     std::string id = section.at("id");
     Location loc(id);
     loc.setName(dr::StringManager::get(section.at("name")));
 		loc.setDescription(section.at("description"));
     loc.setMapPosition({ std::stof(section.at("x")), std::stof(section.at("y")) }, std::stof(section.at("radius")));
-    
+		loc.setTransitStatus(std::stoi(section.at("transit")));
+
+		if (docDist.hasSection(id))
+		{
+			for (const auto& rec : docDist.getSection(id))
+			{
+				loc.addConnection(rec.first, std::stoi(rec.second));
+			}
+		}
+
     mLocations.insert({ id, std::move(loc) });
   }
 }

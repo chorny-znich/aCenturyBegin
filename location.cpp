@@ -89,11 +89,30 @@ bool Location::isHovered() const
 }
 
 /**
+ * @brief 
+ * @param status 
+ */
+void Location::setTransitStatus(bool status)
+{
+  mTransit = status;
+}
+
+bool Location::isTransit() const
+{
+  return mTransit;
+}
+
+/**
  * @brief add a location that connected with this and time to reach connected location
- * @param loc - location connected with this 
+ * @param loc - location connected with this
  * @param time - time to reach the connected location
  */
-void Location::addConnection(const std::string& loc, uint16_t time)
+void Location::addConnection(const std::string& loc, uint32_t time)
 {
-  mConnections.push_back({ loc, time });
+  mConnections.insert({ loc, time });
+}
+
+const std::unordered_map<std::string, uint32_t>& Location::getConnections() const
+{
+  return mConnections;
 }

@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 #include <string_view>
-#include <vector>
+#include <unordered_map>
 #include <SFML/System/Vector2.hpp>
 #include<SFML/System/String.hpp>
 
@@ -22,8 +22,11 @@ public:
   sf::String getDescription() const;
   void setHoverStatus(bool status);
   bool isHovered() const;
+  void setTransitStatus(bool status);
+  bool isTransit() const;
 
-  void addConnection(const std::string& loc, uint16_t time);
+  void addConnection(const std::string& loc, uint32_t time);
+  const std::unordered_map<std::string, uint32_t>& getConnections() const;
 private:
   std::string mId;
   sf::Vector2f mCenter;
@@ -31,5 +34,6 @@ private:
   sf::String mName;
   sf::String mDescription;
   bool mHovered;
-  std::vector < std::pair<std::string, uint16_t>> mConnections;
+  bool mTransit;
+  std::unordered_map<std::string, uint32_t> mConnections;
 };
