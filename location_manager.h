@@ -24,6 +24,8 @@ public:
   const Location& getCurrentLocation() const;
   const Location& getLocation(const std::string& id) const;
   bool isOverlap() const;
+
+  std::vector<std::string> findPath(const std::string startNode, const std::string finishNode);
 private:
   std::map<std::string, Location> mLocations;
   std::string mCurrentLocationId{};

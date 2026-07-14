@@ -2,6 +2,7 @@
 #include "string_manager.h"
 #include "game_data.h"
 #include <disreality_engine.h>
+#include <queue>
 #include <format>
 #include <cassert>
 
@@ -108,4 +109,37 @@ const Location& LocationManager::getLocation(const std::string& id) const
 bool LocationManager::isOverlap() const
 {
 	return mOverlap;
+}
+
+/**
+ * @brief find a path to a clicked or hovered location
+ * @param startNode 
+ * @param finishNode 
+ * @return list of nodes to reach a destination node
+ */
+std::vector<std::string> LocationManager::findPath(const std::string startNode, const std::string finishNode)
+{
+	std::vector<std::string> result;
+	std::queue<std::string> nodes;
+	nodes.push(startNode);
+	std::map<std::string, std::string> path;
+
+	while (!nodes.empty())
+	{
+		std::string currentNode = nodes.front();
+		nodes.pop();
+
+		if (currentNode == finishNode) break;
+		Location loc = mLocations.at(currentNode);
+		for (const auto& node : loc.getConnections())
+		{
+			if (!path.contains(node.first))
+			{
+				nodes.push(node.first);
+
+			}
+		}
+	}
+
+	return result;
 }

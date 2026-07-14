@@ -67,6 +67,8 @@ void AdventureScreen::init()
 	mPlayerMarker.setPosition(loc.getCenter());
 	mPlayerMarker.setFillColor({ 255, 0, 0, 120 });
 	
+	// temporary initialization for path visualization
+	mCurrentPath = { "railway_station", "inn" };
 }
 
 void AdventureScreen::handleInput(const sf::Event& event, sf::RenderWindow& window)
@@ -123,6 +125,13 @@ void AdventureScreen::render(sf::RenderWindow& window)
 		{
 			circle.setFillColor({ 230, 240, 90, 150 });
 		}
+
+		// temporary check for path visualization
+		if (std::find(mCurrentPath.begin(), mCurrentPath.end(), loc.getId()) != mCurrentPath.end())
+		{
+			circle.setFillColor(sf::Color::Blue);
+		}
+
 		window.draw(circle);
 	}
 

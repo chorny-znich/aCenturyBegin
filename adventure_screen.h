@@ -22,4 +22,5 @@ private:
 	sf::Sprite mAdventureMap{dr::Textures::get("adventure_map_0")};
 
 	sf::CircleShape mPlayerMarker{ 70.f };
+	std::vector<std::string> mCurrentPath;
 };
