@@ -175,7 +175,7 @@
     <None Include="data\tile_map.ini">
       <Filter>Файлы ресурсов</Filter>
     </None>
-    <None Include="maps\location_0.ini">
+    <None Include="maps\map_0.ini">
       <Filter>Файлы ресурсов\Map</Filter>
     </None>
     <None Include="maps\distances_0.ini">

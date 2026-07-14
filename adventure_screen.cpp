@@ -107,6 +107,25 @@ void AdventureScreen::render(sf::RenderWindow& window)
 	window.setView(mMainView);
 	window.draw(mAdventureMap);
 
+	// Draw nodes like location and transit location
+	const auto locations = GameWorld::instance().getLocationManager().getLocations();
+	for (const auto& [id, loc] : locations)
+	{
+		float radius = loc.getRadius() / 2;
+		sf::CircleShape circle(radius);
+		circle.setOrigin({ radius, radius });
+		circle.setPosition(loc.getCenter());
+		if (loc.isTransit())
+		{
+			circle.setFillColor({ 248, 248, 255, 150 });
+		}
+		else
+		{
+			circle.setFillColor({ 230, 240, 90, 150 });
+		}
+		window.draw(circle);
+	}
+
 	// draw a circle over the hovered location
 	for (const auto& loc : GameWorld::instance().getLocationManager().getLocations())
 	{

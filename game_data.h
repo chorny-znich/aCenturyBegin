@@ -8,7 +8,7 @@ namespace gd
 
   namespace path
   {
-    constexpr std::string_view LocationPath{ "maps/location_" };
+    constexpr std::string_view LocationPath{ "maps/map_" };
     constexpr std::string_view DistancePath{ "maps/distances_" };
   }
 }
