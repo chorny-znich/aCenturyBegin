@@ -122,8 +122,9 @@ std::vector<std::string> LocationManager::findPath(const std::string startNode, 
 	std::vector<std::string> result;
 	std::queue<std::string> nodes;
 	nodes.push(startNode);
-	std::map<std::string, std::string> path;
+	std::map<std::string, std::string> path = { {startNode, ""} };
 
+	// Find the destination location
 	while (!nodes.empty())
 	{
 		std::string currentNode = nodes.front();
@@ -136,10 +137,19 @@ std::vector<std::string> LocationManager::findPath(const std::string startNode, 
 			if (!path.contains(node.first))
 			{
 				nodes.push(node.first);
-
+				path[node.first] = currentNode;
 			}
 		}
 	}
 
+	// Build a reverse path from destination to start
+	std::string currentNode = finishNode;
+	while (currentNode != "")
+	{
+		result.push_back(currentNode);
+		currentNode = path.at(currentNode);
+	}
+
+	std::reverse(result.begin(), result.end());
 	return result;
 }

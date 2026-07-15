@@ -26,10 +26,14 @@ struct AdventureScreen::ScreenInputVisitor
 		if (GameWorld::instance().getLocationManager().updateHoverStatus(mouseViewCoords))
 		{
 			window.setMouseCursor(dr::CursorManager::get("hand"));
+			LocationManager& locManager = GameWorld::instance().getLocationManager();
+			screen.mCurrentPath = GameWorld::instance().getLocationManager().findPath(GameWorld::instance().getPlayerLocation(),
+				locManager.getCurrentLocationId().data());
 		}
 		else
 		{
 			window.setMouseCursor(dr::CursorManager::get("arrow"));
+			screen.mCurrentPath.clear();
 		}
 	}
 
@@ -39,11 +43,15 @@ struct AdventureScreen::ScreenInputVisitor
 	 */
 	void operator()(const sf::Event::MouseButtonPressed mouseButton)
 	{
+		
 		if (mouseButton.button == sf::Mouse::Button::Left && GameWorld::instance().getLocationManager().isOverlap())
 		{
 			sf::Vector2f mouseViewCoords = window.mapPixelToCoords(mouseButton.position);
 			LocationManager& locManager = GameWorld::instance().getLocationManager();
 			const Location& loc = locManager.getCurrentLocation();
+
+			GameWorld::instance().getLocationManager().findPath(GameWorld::instance().getPlayerLocation(),
+				locManager.getCurrentLocationId().data());
 
 			GameWorld::instance().getWorldStateManager().advanceTime(240);
 			GameWorld::instance().setPlayerLocation(loc.getId().data());
@@ -66,9 +74,6 @@ void AdventureScreen::init()
 	const Location& loc = GameWorld::instance().getLocationManager().getLocation(GameWorld::instance().getPlayerLocation());
 	mPlayerMarker.setPosition(loc.getCenter());
 	mPlayerMarker.setFillColor({ 255, 0, 0, 120 });
-	
-	// temporary initialization for path visualization
-	mCurrentPath = { "railway_station", "inn" };
 }
 
 void AdventureScreen::handleInput(const sf::Event& event, sf::RenderWindow& window)
@@ -94,6 +99,15 @@ void AdventureScreen::update(float dt)
 	std::string dayPhase = GameWorld::instance().getWorldStateManager().getCurrentTimeOfday().data();
 	ImGui::Begin("World state");
 	ImGui::Text(std::format("Phase of day: {}", dayPhase).c_str());
+	ImGui::End();
+
+	std::string text = "";
+	for (const auto& loc : mCurrentPath)
+	{
+		text += loc + "\n";
+	}
+	ImGui::Begin("Pathfinding");
+	ImGui::Text(text.c_str());
 	ImGui::End();
 
 	const Location& loc = GameWorld::instance().getLocationManager().getLocation(GameWorld::instance().getPlayerLocation());
