@@ -43,17 +43,25 @@ struct AdventureScreen::ScreenInputVisitor
 	 */
 	void operator()(const sf::Event::MouseButtonPressed mouseButton)
 	{
-		
 		if (mouseButton.button == sf::Mouse::Button::Left && GameWorld::instance().getLocationManager().isOverlap())
 		{
 			sf::Vector2f mouseViewCoords = window.mapPixelToCoords(mouseButton.position);
 			LocationManager& locManager = GameWorld::instance().getLocationManager();
 			const Location& loc = locManager.getCurrentLocation();
 
-			GameWorld::instance().getLocationManager().findPath(GameWorld::instance().getPlayerLocation(),
-				locManager.getCurrentLocationId().data());
+			// Calculate time to destination location
+			screen.mDistanceTime = 0;
+			std::string currentLocation = GameWorld::instance().getPlayerLocation();
+			for (const auto& loc : screen.mCurrentPath)
+			{
+				if (loc != currentLocation)
+				{
+					screen.mDistanceTime += locManager.getLocation(currentLocation).getConnections().at(loc);
+				}
+				currentLocation = loc;
+			}
 
-			GameWorld::instance().getWorldStateManager().advanceTime(240);
+			GameWorld::instance().getWorldStateManager().advanceTime(screen.mDistanceTime);
 			GameWorld::instance().setPlayerLocation(loc.getId().data());
 			dr::ScreenManager::addScreen<LocationScreen>("location_screen");
 		}
@@ -108,6 +116,7 @@ void AdventureScreen::update(float dt)
 	}
 	ImGui::Begin("Pathfinding");
 	ImGui::Text(text.c_str());
+	ImGui::Text(std::to_string(mDistanceTime).c_str());
 	ImGui::End();
 
 	const Location& loc = GameWorld::instance().getLocationManager().getLocation(GameWorld::instance().getPlayerLocation());

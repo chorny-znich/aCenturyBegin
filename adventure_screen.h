@@ -23,4 +23,5 @@ private:
 
 	sf::CircleShape mPlayerMarker{ 70.f };
 	std::vector<std::string> mCurrentPath;
+	int32_t mDistanceTime{ 0 };
 };
