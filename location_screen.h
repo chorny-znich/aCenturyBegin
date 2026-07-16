@@ -1,4 +1,5 @@
 #pragma once
+#include "date_widget.h"
 #include "game_data.h"
 #include <disreality_engine.h>
 
@@ -21,4 +22,5 @@ private:
 	std::optional<sf::Sprite> mBackground;
 	std::vector<sf::Text> mInfo;
 	dr::TextButton mBackButton{ {150.f, 50.f}, dr::TextManager::get("normal_button") };
+	DateWidget mDateWidget;
 };

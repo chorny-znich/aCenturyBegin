@@ -135,6 +135,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="about_screen.cpp" />
+    <ClCompile Include="date_widget.cpp" />
     <ClCompile Include="game_engine.cpp" />
     <ClCompile Include="game_world.cpp" />
     <ClCompile Include="ImGui\imgui-SFML.cpp" />
@@ -153,6 +154,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="about_screen.h" />
+    <ClInclude Include="date_widget.h" />
     <ClInclude Include="adventure_screen.h">
       <SubType>
       </SubType>

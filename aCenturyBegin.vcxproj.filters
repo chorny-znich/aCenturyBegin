@@ -46,6 +46,12 @@
     <Filter Include="Файлы ресурсов\Map">
       <UniqueIdentifier>{b516f108-2bb2-43b4-9eab-422b5d433061}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\GUI">
+      <UniqueIdentifier>{9d3b66af-1d75-4f4d-973d-9d98d5d0d32f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\GUI">
+      <UniqueIdentifier>{ebb0e849-7de0-4918-a791-bf976a69a748}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -95,6 +101,9 @@
     </ClCompile>
     <ClCompile Include="game_world.cpp">
       <Filter>Исходные файлы\GameMechanics</Filter>
+    </ClCompile>
+    <ClCompile Include="date_widget.cpp">
+      <Filter>Исходные файлы\GUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -154,6 +163,9 @@
     </ClInclude>
     <ClInclude Include="game_world.h">
       <Filter>Файлы заголовков\GameMechanics</Filter>
+    </ClInclude>
+    <ClInclude Include="date_widget.h">
+      <Filter>Файлы заголовков\GUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -77,6 +77,7 @@ void AdventureScreen::init()
 {
 	ImGui::SFML::Init(dr::ImguiHelper::getWindow());
 	GameWorld::instance().init();
+	mDateWidget.init({ 50.f, 5.f }, "date_gui_light");
 
 	mPlayerMarker.setOrigin({ 70.f, 70.f });
 	const Location& loc = GameWorld::instance().getLocationManager().getLocation(GameWorld::instance().getPlayerLocation());
@@ -96,6 +97,8 @@ void AdventureScreen::handleInput(const sf::Event& event, sf::RenderWindow& wind
  */
 void AdventureScreen::update(float dt)
 {
+	mDateWidget.update(dt);
+
 	ImGui::SFML::Update(dr::ImguiHelper::getWindow(), dr::ImguiHelper::getTime());
 	sf::RenderWindow& window = dr::ImguiHelper::getWindow();
 	sf::Vector2f mouseViewCoords = window.mapPixelToCoords(sf::Mouse::getPosition(window));
@@ -173,6 +176,8 @@ void AdventureScreen::render(sf::RenderWindow& window)
 
 	// Draw player's marker
 	window.draw(mPlayerMarker);
+	// Draw GUI 
+	mDateWidget.render(window);
 
 	ImGui::SFML::Render(window);
 }

@@ -58,6 +58,7 @@ struct LocationScreen::ScreenInputVisitor
  */
 void LocationScreen::init()
 {
+	mDateWidget.init({ 1700.f, 25.f }, "date_gui_dark");
 	LocationManager& locManager = GameWorld::instance().getLocationManager();
 	const Location& loc = locManager.getCurrentLocation();
 	WorldStateManager& worldManager = GameWorld::instance().getWorldStateManager();
@@ -88,6 +89,7 @@ void LocationScreen::handleInput(const sf::Event& event, sf::RenderWindow& windo
 
 void LocationScreen::update(float dt)
 {
+	mDateWidget.update(dt);
 	LocationManager& locManager = GameWorld::instance().getLocationManager();
 	const Location& loc = locManager.getCurrentLocation();
 	WorldStateManager& worldManager = GameWorld::instance().getWorldStateManager();
@@ -110,4 +112,5 @@ void LocationScreen::render(sf::RenderWindow& window)
 		window.draw(txt);
 	}
 	mBackButton.render(window);
+	mDateWidget.render(window);
 }

@@ -1,4 +1,5 @@
 #pragma once
+#include "date_widget.h"
 #include "game_data.h"
 #include <disreality_engine.h>
 #include <memory>
@@ -20,6 +21,8 @@ private:
 	struct ScreenInputVisitor;
 	sf::View mMainView{ sf::FloatRect({0, 0}, {gd::GraphicsResolution.x, gd::GraphicsResolution.y}) };
 	sf::Sprite mAdventureMap{dr::Textures::get("adventure_map_0")};
+
+	DateWidget mDateWidget;
 
 	sf::CircleShape mPlayerMarker{ 70.f };
 	std::vector<std::string> mCurrentPath;
