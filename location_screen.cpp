@@ -1,6 +1,8 @@
 #include "location_screen.h"
 #include "game_world.h"
 #include "world_state_manager.h"
+#include <disreality_engine.h>
+#include <SFML/System/String.hpp>
 #include <format>
 #include <imgui.h>
 #include <imgui-SFML.h>
@@ -75,7 +77,12 @@ void LocationScreen::init()
 
 	sf::Text locDescription = dr::TextManager::get("location_description");
 	locDescription.setPosition({ 300.f, 1020.f });
-	locDescription.setString(loc.getDescription());
+	sf::String locDescriptionStr = loc.getDescription();
+	if (loc.hasClue())
+	{
+		locDescriptionStr += dr::StringManager::get("clue_in_location");
+	}
+	locDescription.setString(locDescriptionStr);
 	mInfo.push_back(locDescription);
 
 	mBackButton.setString(dr::StringManager::get("back_button"));

@@ -8,7 +8,8 @@ Location::Location(const std::string& id) :
   mId(id),
   mCenter({0.f, 0.f}),
   mRadius(0.f),
-  mHovered(false)
+  mHovered{ false },
+  mTransit{ false }
 {
 }
 
@@ -115,4 +116,21 @@ void Location::addConnection(const std::string& loc, uint32_t time)
 const std::unordered_map<std::string, uint32_t>& Location::getConnections() const
 {
   return mConnections;
+}
+
+/**
+ * @brief add one clue to the location
+ */
+void Location::addClue()
+{
+  mClues.push_back(Clue());
+}
+
+/**
+*@brief If any clue is inside the location
+* @return true if at least one clue is inside the location
+*/
+bool Location::hasClue() const
+{
+  return !mClues.empty();
 }

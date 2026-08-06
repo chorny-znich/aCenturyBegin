@@ -1,6 +1,8 @@
 #pragma once
+#include "clue.h"
 #include <string>
 #include <string_view>
+#include <vector>
 #include <unordered_map>
 #include <SFML/System/Vector2.hpp>
 #include<SFML/System/String.hpp>
@@ -27,6 +29,9 @@ public:
 
   void addConnection(const std::string& loc, uint32_t time);
   const std::unordered_map<std::string, uint32_t>& getConnections() const;
+
+  void addClue();
+  bool hasClue() const;
 private:
   std::string mId;
   sf::Vector2f mCenter;
@@ -36,4 +41,5 @@ private:
   bool mHovered;
   bool mTransit;
   std::unordered_map<std::string, uint32_t> mConnections;
+  std::vector<Clue> mClues;
 };

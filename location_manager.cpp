@@ -40,6 +40,8 @@ void LocationManager::init(int id)
 
     mLocations.insert({ id, std::move(loc) });
   }
+	mLocations.at("townhall").addClue();
+	mLocations.at("cemetary").addClue();
 }
 
 /**

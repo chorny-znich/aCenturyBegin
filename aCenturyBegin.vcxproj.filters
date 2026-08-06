@@ -105,6 +105,9 @@
     <ClCompile Include="date_widget.cpp">
       <Filter>Исходные файлы\GUI</Filter>
     </ClCompile>
+    <ClCompile Include="clue.cpp">
+      <Filter>Исходные файлы\GameMechanics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game_engine.h">
@@ -166,6 +169,9 @@
     </ClInclude>
     <ClInclude Include="date_widget.h">
       <Filter>Файлы заголовков\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="clue.h">
+      <Filter>Файлы заголовков\GameMechanics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
