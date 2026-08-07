@@ -108,6 +108,9 @@
     <ClCompile Include="clue.cpp">
       <Filter>Исходные файлы\GameMechanics</Filter>
     </ClCompile>
+    <ClCompile Include="clue_manager.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game_engine.h">
@@ -172,6 +175,9 @@
     </ClInclude>
     <ClInclude Include="clue.h">
       <Filter>Файлы заголовков\GameMechanics</Filter>
+    </ClInclude>
+    <ClInclude Include="clue_manager.h">
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -136,6 +136,7 @@
   <ItemGroup>
     <ClCompile Include="about_screen.cpp" />
     <ClCompile Include="clue.cpp" />
+    <ClCompile Include="clue_manager.cpp" />
     <ClCompile Include="date_widget.cpp" />
     <ClCompile Include="game_engine.cpp" />
     <ClCompile Include="game_world.cpp" />
@@ -156,6 +157,7 @@
   <ItemGroup>
     <ClInclude Include="about_screen.h" />
     <ClInclude Include="clue.h" />
+    <ClInclude Include="clue_manager.h" />
     <ClInclude Include="date_widget.h" />
     <ClInclude Include="adventure_screen.h">
       <SubType>

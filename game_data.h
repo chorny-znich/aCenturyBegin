@@ -10,5 +10,6 @@ namespace gd
   {
     constexpr std::string_view LocationPath{ "maps/map_" };
     constexpr std::string_view DistancePath{ "maps/distances_" };
+    constexpr std::string_view CluePath{ "data/clue.ini" };
   }
 }
